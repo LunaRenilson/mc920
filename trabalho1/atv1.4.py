@@ -2,7 +2,7 @@ import numpy as np
 import cv2 as cv
 
 
-imagem = cv.imread('imgs/relogio.png', cv.IMREAD_COLOR_RGB)
+imagem = cv.imread('imgs/relogio.png')
 
 transformacao = np.array([
         [0.393, 0.769, 0.189],
