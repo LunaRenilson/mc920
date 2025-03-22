@@ -2,10 +2,10 @@ import numpy as np
 import cv2 as cv
 
 
-imagem = cv.imread('imgs/macaco.png')
+imagem = cv.imread('imgs/relogio.png')
 
 
 
-cv.imshow('image', imagem)
+cv.imshow('image', resultado)
 cv.waitKey(0)
 cv.destroyAllWindows()
