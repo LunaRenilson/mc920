@@ -2,7 +2,7 @@ import numpy as np
 import cv2 as cv
 
 
-imagem = cv.imread('imgs/relogio.png')
+imagem = cv.imread('imgs/relogio.png', cv.IMREAD_COLOR_RGB)
 
 transformacao = np.array([
         [0.393, 0.769, 0.189],
@@ -10,11 +10,12 @@ transformacao = np.array([
         [0.272, 0.534, 0.131]
     ])
 
+transformacao = np.transpose(transformacao)
+transformacao = np.flip(transformacao)
+resultado = np.dot(imagem, transformacao)
 
-resultado = np.matmul(imagem, transformacao)
-resultado = np.clip(resultado, 0, 255)
+resultado = np.clip(resultado, 0, 255).astype(np.uint8)
 
-resultado = resultado.astype(np.uint8)
 
 
 cv.imshow('image', resultado)
