@@ -2,11 +2,29 @@ import numpy as np
 import cv2 as cv
 
 
-imagem = cv.imread('imgs/macaco.png')
+imagem = cv.imread('imgs/relogio.png')
 
-negativa = np.subtract(255, imagem)
-intervalo = np.clip(imagem, 100, 200).astype(np.uint8)
+def negativa(imagem):
+     negativa = np.subtract(255, imagem)
+     return negativa
 
-cv.imshow('image', intervalo)
+def restIntervalo(imagem, inicio, fim):
+     intervalo = np.clip(imagem, inicio, fim).astype(np.uint8)
+     return intervalo
+
+def inverterPar(imagem):
+     inversaPar = np.flip(imagem[::2, :], axis=1) # Invertendo as linhas pares da imagem
+     imagem[::2, :] = inversaPar
+     return imagem
+
+def espelharMetade(imagem):
+     altura, largura = np.shape
+     metadeAltura = altura // 2
+     metadeImagem = imagem[:metadeAltura]
+
+
+resultado = inverterPar(imagem)
+
+cv.imshow('image', resultado)
 cv.waitKey(0)
 cv.destroyAllWindows()
