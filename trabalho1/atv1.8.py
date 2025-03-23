@@ -2,7 +2,7 @@ import numpy as np
 import cv2 as cv
 
 
-imagem = cv.imread('imgs/relogio.png')
+imagem = cv.imread('imgs/macaco.png')
 
 def negativa(imagem):
      negativa = np.subtract(255, imagem)
@@ -18,12 +18,16 @@ def inverterPar(imagem):
      return imagem
 
 def espelharMetade(imagem):
-     altura, largura = np.shape
+     altura = imagem.shape[0]
      metadeAltura = altura // 2
-     metadeImagem = imagem[:metadeAltura]
+     imagem[metadeAltura:] = np.flip(imagem[:metadeAltura])
+     return imagem
 
+def espelhamentoVertical(imagem):
+     imagem = np.flip(imagem)
+     return imagem
 
-resultado = inverterPar(imagem)
+resultado = espelhamentoVertical(imagem)
 
 cv.imshow('image', resultado)
 cv.waitKey(0)
