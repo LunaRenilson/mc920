@@ -27,7 +27,7 @@ def espelhamentoVertical(imagem):
      imagem = np.flip(imagem)
      return imagem
 
-resultado = espelhamentoVertical(imagem)
+resultado = restIntervalo(imagem, 100, 200)
 
 cv.imshow('image', resultado)
 cv.waitKey(0)

@@ -11,7 +11,7 @@ def quantizacao(imagem, niveis):
           resultado = quantizada.astype(np.uint8)
           return resultado
 
-resultado = quantizacao(imagem, 4)
+resultado = quantizacao(imagem, 2)
 
 cv.imshow('image', resultado)
 cv.waitKey(0)
