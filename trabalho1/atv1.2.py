@@ -15,13 +15,11 @@ image01 = np.divide(imagem, 255)
 imgPower = gamma(image01, 2.5)
 
 # Convertendo de volta para intervalo [0, 255]
-resultado = np.multiply(imgPower, 255)
+intervaloOriginal = np.multiply(imgPower, 255)
 
+# Garantindo intervalo correto e convertendo para inteiro de 8 bytes
+resultado = np.clip(intervaloOriginal, 0, 255).astype(np.uint8)
 
-cv.imshow('image', imgPower)
-cv.waitKey(0)
-cv.destroyAllWindows()
-system('clear') 
+concatenado = cv.hconcat([imagem, resultado])
 
-
-
+cv.imwrite('imgs_geradas/atv1.2/source.png', concatenado)

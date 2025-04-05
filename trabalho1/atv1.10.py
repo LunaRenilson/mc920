@@ -82,15 +82,13 @@ h11 = np.array([
 
 
 def aplicarFiltro(imagem, filtro):
-    imagem = np.transpose(filtro)
-    # imagem = np.flip(filtro)
-    resultado = cv.filter2D(imagem, -1, filtro)
+    resultado = cv.filter2D(imagem, ddepth=-1, kernel=filtro)
     resultado = np.clip(resultado, 0, 255).astype(np.uint8)
     return resultado
 
 
 img = cv.imread('imgs/macaco.png', cv.IMREAD_GRAYSCALE)
-novaImg = aplicarFiltro(img, h1)
+novaImg = aplicarFiltro(img, h9)
 
 
 cv.imshow('Filtro h1', novaImg)
