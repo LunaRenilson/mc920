@@ -2,6 +2,7 @@ import cv2 as cv
 import numpy as np
 
 image = cv.imread('imgs/macaco.png', cv.IMREAD_GRAYSCALE)
+original_image = image.copy()
 
 h, w = image.shape
 imageH = h // 4
@@ -29,7 +30,10 @@ imageReordered = flatted[order]
 # Organizando os elementos pro formato original (512x512)
 reordered = imageReordered.reshape(4,4,128,128).swapaxes(1, 2).reshape(512, 512)
 
+resultado = np.clip(reordered, 0, 255).astype(np.uint8)
 
-cv.imshow('image', reordered)
-cv.waitKey(0)
-cv.destroyAllWindows()
+
+divisor = np.ones((h, 10), dtype=np.uint8) * 255 
+concatenado = cv.hconcat([original_image, divisor, resultado])
+
+cv.imwrite('imgs_geradas/atv1.3/source.png', concatenado)

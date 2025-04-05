@@ -9,7 +9,8 @@ def planoBits(imagem, bit):
      plano = np.where((imagem & mascara), 255, 0).astype(np.uint8)
      return plano
 
-plano = planoBits(imagem, 5)
-cv.imshow('image', plano)
-cv.waitKey(0)
-cv.destroyAllWindows()
+plano = planoBits(imagem, 6)
+
+concatenado = cv.hconcat([imagem, plano])
+
+cv.imwrite('imgs_geradas/atv1.6/source.png', concatenado)

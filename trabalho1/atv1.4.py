@@ -16,7 +16,6 @@ resultado = np.dot(imagem, transformacao)
 
 resultado = np.clip(resultado, 0, 255).astype(np.uint8)
 
+concatenado = cv.hconcat([imagem, resultado])
 
-cv.imshow('image', resultado)
-cv.waitKey(0)
-cv.destroyAllWindows()
+cv.imwrite('imgs_geradas/atv1.4/source.png', concatenado)
