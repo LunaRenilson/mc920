@@ -13,6 +13,5 @@ def quantizacao(imagem, niveis):
 
 resultado = quantizacao(imagem, 2)
 
-cv.imshow('image', resultado)
-cv.waitKey(0)
-cv.destroyAllWindows()
+concatenado = cv.hconcat([imagem, resultado])
+cv.imwrite('imgs_geradas/atv1.9/source.png', concatenado)

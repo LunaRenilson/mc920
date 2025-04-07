@@ -81,16 +81,23 @@ h11 = np.array([
 ])
 
 
-def aplicarFiltro(imagem, filtro):
+def aplicarFiltro(imagem, filtro, nomeArq):
     resultado = cv.filter2D(imagem, ddepth=-1, kernel=filtro)
     resultado = np.clip(resultado, 0, 255).astype(np.uint8)
+    concatenado = cv.hconcat([imagem, resultado])
+    cv.imwrite(f'imgs_geradas/atv1.10/{nomeArq}.png', concatenado)
     return resultado
 
 
 img = cv.imread('imgs/macaco.png', cv.IMREAD_GRAYSCALE)
-novaImg = aplicarFiltro(img, h9)
-
-
-cv.imshow('Filtro h1', novaImg)
-cv.waitKey(0)
-cv.destroyAllWindows()
+novaImg = aplicarFiltro(img, h1, 'filtroH1')
+novaImg = aplicarFiltro(img, h2, 'filtroH2')
+novaImg = aplicarFiltro(img, h3, 'filtroH3')
+novaImg = aplicarFiltro(img, h4, 'filtroH4')
+novaImg = aplicarFiltro(img, h5, 'filtroH5')
+novaImg = aplicarFiltro(img, h6, 'filtroH6')
+novaImg = aplicarFiltro(img, h7, 'filtroH7')
+novaImg = aplicarFiltro(img, h8, 'filtroH8')
+novaImg = aplicarFiltro(img, h9, 'filtroH9')
+novaImg = aplicarFiltro(img, h10, 'filtroH10')
+novaImg = aplicarFiltro(img, h11, 'filtroH11')
